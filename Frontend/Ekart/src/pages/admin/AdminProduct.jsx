@@ -107,7 +107,7 @@ if(sortOrder == 'lowtoHigh'){
       }
 
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
 
   }
@@ -126,7 +126,7 @@ if(sortOrder == 'lowtoHigh'){
       }
 
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

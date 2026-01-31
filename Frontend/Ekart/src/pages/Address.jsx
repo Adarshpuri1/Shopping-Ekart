@@ -61,7 +61,7 @@ const Address = () => {
       }
     )
 
-    console.log(data);
+    
     if(!data.success) return toast.error("Something went wrong")
 
     const options = {
@@ -87,7 +87,7 @@ const Address = () => {
               toast.error("❌ Payment Verification failed")
             }
           } catch (error) {
-            
+            console.error(error);
           }
         },
         modal: {

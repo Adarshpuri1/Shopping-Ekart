@@ -23,7 +23,7 @@ const AdminUser = () => {
         setUsers(res.data.Users)
       }
     }catch(error){
-      console.log(error)
+      console.warn(error)
     }
   }
 

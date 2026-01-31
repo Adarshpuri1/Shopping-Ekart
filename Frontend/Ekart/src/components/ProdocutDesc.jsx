@@ -21,7 +21,7 @@ const ProdocutDesc = ({product}) => {
                 dispatch(setCart(res.data.cart))
             }
         }catch(error){
-            console.log(error)
+            console.error(error)
         }
     }
 
