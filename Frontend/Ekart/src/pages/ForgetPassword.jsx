@@ -20,7 +20,7 @@ const ForgetPassword = () => {
         e.preventDefault();
         setLoading(true)
         try {
-            const res = await axios.post(`http://localhost:8000/api/v1/user/forget-password`, { email: email }, {
+            const res = await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/forget-password`, { email: email }, {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -44,7 +44,7 @@ const ForgetPassword = () => {
         e.preventDefault();
         setLoading(true)
         try {
-            const res = await axios.post(`http://localhost:8000/api/v1/user/verify-otp/${email}`,{otp: otp}, {
+            const res = await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/verify-otp/${email}`,{otp: otp}, {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -67,7 +67,7 @@ const ForgetPassword = () => {
         e.preventDefault();
         setLoading(true)
         try {
-            const res = await axios.post(`http://localhost:8000/api/v1/user/change-password/${email}`, {
+            const res = await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/change-password/${email}`, {
                 newPassword: newPassword,
                 confirmPassword: confirmPassword
             },
