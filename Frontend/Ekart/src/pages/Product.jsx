@@ -45,7 +45,7 @@ const Product = () => {
     try {
       setLoading(true)
       const res = await axios.get(
-        "http://localhost:8000/api/v1/product/getallproducts"
+        "https://shopping-ekart-backend.onrender.com/api/v1/product/getallproducts"
       )
 
       if (res.data.success) {
