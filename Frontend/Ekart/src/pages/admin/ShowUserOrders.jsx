@@ -9,7 +9,7 @@ const ShowUserOrders = () => {
   const accessToken = localStorage.getItem("accessToken");
 
   const getUserOrders =async()=>{
-    const res= await axios.get(`http://localhost:8000/api/v1/orders/user-order/${params.userId}`,{
+    const res= await axios.get(`https://shopping-ekart-backend.onrender.com/api/v1/orders/user-order/${params.userId}`,{
       headers:{
         Authorization:  `Bearer ${accessToken}`
       }
