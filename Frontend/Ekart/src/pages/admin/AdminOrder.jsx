@@ -9,7 +9,7 @@ const AdminOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/v1/orders/all", {
+        const res = await axios.get("https://shopping-ekart-backend.onrender.com/api/v1/orders/all", {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
