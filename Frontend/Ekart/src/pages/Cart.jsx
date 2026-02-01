@@ -25,7 +25,7 @@ const Cart = () => {
   const getAllData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:8000/api/v1/cart/',
+        'https://shopping-ekart-backend.onrender.com/api/v1/cart/',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -51,7 +51,7 @@ const Cart = () => {
 
     try {
       const res = await axios.put(
-        'http://localhost:8000/api/v1/cart/update',
+        'https://shopping-ekart-backend.onrender.com/api/v1/cart/update',
         { productId, type },
         {
           headers: {
@@ -74,7 +74,7 @@ const Cart = () => {
 
     try {
       const res = await axios.delete(
-        'http://localhost:8000/api/v1/cart/remove',
+        'https://shopping-ekart-backend.onrender.com/api/v1/cart/remove',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
