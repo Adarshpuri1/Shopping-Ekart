@@ -79,7 +79,7 @@ const Profile = () => {
 
     try {
       setLoading(true)
-      const res = await axios.put(`http://localhost:8000/api/v1/user/update/${id}`, form, {
+      const res = await axios.put(`https://shopping-ekart-backend.onrender.com/api/v1/user/update/${id}`, form, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
