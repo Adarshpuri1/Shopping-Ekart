@@ -72,7 +72,7 @@ const UserInfo = () => {
       }
 
       const res = await axios.put(
-        `http://localhost:8000/api/v1/user/update/${userId}`,
+        `https://shopping-ekart-backend.onrender.com/api/v1/user/update/${userId}`,
         formData,
         {
           headers: {
@@ -97,7 +97,7 @@ const UserInfo = () => {
   const getUserDetails = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/user/get-user/${userId}`
+        `https://shopping-ekart-backend.onrender.com/api/v1/user/get-user/${userId}`
       )
 
       if (res.data.success) {
