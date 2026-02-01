@@ -11,7 +11,7 @@ const Reverify = () => {
 
     const handlesubmit=async()=>{
         try{
-            const res=await axios.post(`http://localhost:8000/api/v1/user/reverify`,{email: email},{
+            const res=await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/reverify`,{email: email},{
                 headers:{
                     "Content-Type":"application/json"
                 }
