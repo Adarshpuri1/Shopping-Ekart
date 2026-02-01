@@ -19,7 +19,7 @@ const AdminSale = () => {
   const fetchStats = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8000/api/v1/orders/sales",
+        "https://shopping-ekart-backend.onrender.com/api/v1/orders/sales",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`
