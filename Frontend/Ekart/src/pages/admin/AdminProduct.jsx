@@ -92,7 +92,7 @@ if(sortOrder == 'lowtoHigh'){
       })
 
     try {
-      const res = await axios.put(`http://localhost:8000/api/v1/product/update/${editProduct._id}`, formData, {
+      const res = await axios.put(`https://shopping-ekart-backend.onrender.com/api/v1/product/update/${editProduct._id}`, formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`
 
@@ -115,7 +115,7 @@ if(sortOrder == 'lowtoHigh'){
   const deleteProductHandler = async (productId) => {
     try {
       const reminingProducts = products.filter((product) => product._id !== productId)
-      const res = await axios.delete(`http://localhost:8000/api/v1/product/delete/${productId}`, {
+      const res = await axios.delete(`https://shopping-ekart-backend.onrender.com/api/v1/product/delete/${productId}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
