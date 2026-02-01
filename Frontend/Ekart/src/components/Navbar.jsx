@@ -29,7 +29,7 @@ const Navbar = () => {
 
   const logoutHandler= async()=>{
     try{
-      const res=await axios.post(`http://localhost:8000/api/v1/user/logout`,{},{
+      const res=await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/logout`,{},{
         headers:{
           Authorization: `Bearer ${accessToken}`
           
