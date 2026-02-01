@@ -10,7 +10,7 @@ const MyOrder = () => {
     
     const getUserOrders= async ()=> {
         try{
-            const res= await axios.get(`http://localhost:8000/api/v1/orders/my-order`,{
+            const res= await axios.get(`https://shopping-ekart-backend.onrender.com/api/v1/orders/my-order`,{
                 headers:{
                     Authorization: `Bearer ${accessToken}`
                 }
