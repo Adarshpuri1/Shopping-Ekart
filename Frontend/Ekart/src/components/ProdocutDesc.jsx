@@ -11,7 +11,7 @@ const ProdocutDesc = ({product}) => {
     const dispatch = useDispatch();
     const addtocart=async(productId)=>{
         try{
-            const res= await axios.post(`http://localhost:8000/api/v1/cart/add`,{productId},{
+            const res= await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/cart/add`,{productId},{
                 headers:{
                     Authorization: `Bearer ${accessToken}`
                 }
