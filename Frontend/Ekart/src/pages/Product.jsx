@@ -1,4 +1,4 @@
-import FilterSidebar from '@/components/filterSidebar'
+
 import React, { useEffect, useState } from 'react'
 
 import {
@@ -16,6 +16,7 @@ import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from '@/redux/productSlice'
 import Productcart from '@/components/Productcart'
+import FilterSidebar from '@/components/FilterSidebar.jsx'
 
 const Product = () => {
 
