@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     const[status,setStatus]=useState("verifying.....");
     const VerifyEmails=async()=>{
         try{
-            const res=await axios.post(`http://localhost:8000/api/v1/user/verify`,{},{
+            const res=await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/verify`,{},{
                 headers:{
                     Authorization: `Bearer ${token}`
                 }
