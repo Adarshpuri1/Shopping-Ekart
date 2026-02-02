@@ -4,6 +4,7 @@ import axios from 'axios';
 import { setCart } from '@/redux/productSlice';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { toast } from 'sonner';
 
 const ProdocutDesc = ({product}) => {
 
