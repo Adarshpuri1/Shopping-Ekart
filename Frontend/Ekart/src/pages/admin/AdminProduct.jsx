@@ -220,7 +220,7 @@ if(sortOrder == 'lowtoHigh'){
                       </div>
                       <div className="grid gap-2">
                         <Label>
-                          Brand
+                          Category
                         </Label>
                         <Input
                           type='text'
