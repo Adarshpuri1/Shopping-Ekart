@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 import 'dotenv/config'
-export const SendOTPMail = (otp, email) => {
+export const sendOTPMail = (otp, email) => {
     const transporter =
         nodemailer.createTransport(
             {
