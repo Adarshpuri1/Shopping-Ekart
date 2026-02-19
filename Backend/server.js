@@ -7,6 +7,8 @@ import CartRouter from './routes/CartRoute.js'
 import OrderRouter from './routes/OrderRoute.js'
 import cors from 'cors'
 
+
+
 const app = express();
 
 app.use(cors({
@@ -17,11 +19,6 @@ app.use(cors({
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-
-
-app.get('/', (req, resp) => {
-    resp.send('This is Ecommarce website')
-})
 
 app.use('/api/v1/user',UserRouter)
 app.use('/api/v1/product',ProductRouter)
