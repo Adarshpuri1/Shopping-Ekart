@@ -50,7 +50,7 @@ const AddProduct = () => {
 
     try {
       setLoading(true)
-      const res = await axios.post('https://shopping-ekart-backend.onrender.comapi/v1/product/add', form, {
+      const res = await axios.post('https://shopping-ekart.vercel.app/v1/product/add', form, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

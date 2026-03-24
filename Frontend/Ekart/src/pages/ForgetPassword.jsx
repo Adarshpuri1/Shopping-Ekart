@@ -75,7 +75,7 @@ const ForgetPassword = () => {
   const handleEmail = async (e) => {
     e.preventDefault(); setLoading(true)
     try {
-      const res = await axios.post(`https://shopping-ekart-backend.onrender.comapi/v1/user/forget-password`,
+      const res = await axios.post(`https://shopping-ekart.vercel.app/v1/user/forget-password`,
         { email }, { headers: { 'Content-Type': 'application/json' } })
       if (res.data.success) { toast.success(res.data.message); setStep(2) }
     } catch (error) { console.error(error); toast.error(error.response?.data?.message) }
@@ -85,7 +85,7 @@ const ForgetPassword = () => {
   const handleOTP = async (e) => {
     e.preventDefault(); setLoading(true)
     try {
-      const res = await axios.post(`https://shopping-ekart-backend.onrender.comapi/v1/user/verify-otp/${email}`,
+      const res = await axios.post(`https://shopping-ekart.vercel.app/v1/user/verify-otp/${email}`,
         { otp }, { headers: { 'Content-Type': 'application/json' } })
       if (res.data.success) { toast.success(res.data.message); setStep(3) }
     } catch (error) { console.error(error); toast.error(error.response?.data?.message) }
@@ -95,7 +95,7 @@ const ForgetPassword = () => {
   const handlePassword = async (e) => {
     e.preventDefault(); setLoading(true)
     try {
-      const res = await axios.post(`https://shopping-ekart-backend.onrender.comapi/v1/user/change-password/${email}`,
+      const res = await axios.post(`https://shopping-ekart.vercel.app/v1/user/change-password/${email}`,
         { newPassword, confirmPassword }, { headers: { 'Content-Type': 'application/json' } })
       if (res.data.success) { toast.success(res.data.message); navigate('/login') }
     } catch (error) { console.error(error); toast.error(error.response?.data?.message) }

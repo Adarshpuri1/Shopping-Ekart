@@ -23,7 +23,7 @@ const Cart = () => {
 
   const getAllData = async () => {
     try {
-      const res = await axios.get('https://shopping-ekart-backend.onrender.comapi/v1/cart/', {
+      const res = await axios.get('https://shopping-ekart.vercel.app/v1/cart/', {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) dispatch(setCart(res.data.cart))
@@ -35,7 +35,7 @@ const Cart = () => {
   const handleUpdateQuantity = async (productId, type) => {
     if (!productId) return
     try {
-      const res = await axios.put('https://shopping-ekart-backend.onrender.comapi/v1/cart/update',
+      const res = await axios.put('https://shopping-ekart.vercel.app/v1/cart/update',
         { productId, type },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )
@@ -46,7 +46,7 @@ const Cart = () => {
   const handleRemove = async productId => {
     if (!productId) return
     try {
-      const res = await axios.delete('https://shopping-ekart-backend.onrender.comapi/v1/cart/remove', {
+      const res = await axios.delete('https://shopping-ekart.vercel.app/v1/cart/remove', {
         headers: { Authorization: `Bearer ${accessToken}` },
         data: { productId }
       })

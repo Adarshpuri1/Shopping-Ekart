@@ -71,7 +71,7 @@ const AdminSale = () => {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get('https://shopping-ekart-backend.onrender.comapi/v1/orders/sales', {
+      const res = await axios.get('https://shopping-ekart.vercel.app/v1/orders/sales', {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) setStats(res.data)

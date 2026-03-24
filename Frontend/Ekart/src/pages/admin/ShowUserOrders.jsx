@@ -11,7 +11,7 @@ const ShowUserOrders = () => {
 
   const getUserOrders = async () => {
     const res = await axios.get(
-      `https://shopping-ekart-backend.onrender.comapi/v1/orders/user-order/${params.userId}`,
+      `https://shopping-ekart.vercel.app/v1/orders/user-order/${params.userId}`,
       { headers: { Authorization: `Bearer ${accessToken}` } }
     )
     if (res.data.success) setUserOrder(res.data.orders)

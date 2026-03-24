@@ -32,7 +32,7 @@ const Product = () => {
   const getAllData = async () => {
     try {
       setLoading(true)
-      const res = await axios.get('https://shopping-ekart-backend.onrender.comapi/v1/product/getallproducts')
+      const res = await axios.get('https://shopping-ekart.vercel.app/v1/product/getallproducts')
       if (res.data.success) {
         setAllProduct(res.data.Products)
         dispatch(setProducts(res.data.Products))

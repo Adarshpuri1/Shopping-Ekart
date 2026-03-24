@@ -18,7 +18,7 @@ const AdminUser = () => {
 
   const getAllUser = async () => {
     try {
-      const res = await axios(`https://shopping-ekart-backend.onrender.comapi/v1/user/all-user`, {
+      const res = await axios(`https://shopping-ekart.vercel.app/v1/user/all-user`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) setUsers(res.data.Users)

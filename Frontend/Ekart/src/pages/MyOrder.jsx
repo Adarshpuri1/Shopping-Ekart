@@ -10,7 +10,7 @@ const MyOrder = () => {
 
   const getUserOrders = async () => {
     try {
-      const res = await axios.get(`https://shopping-ekart-backend.onrender.comapi/v1/orders/my-order`, {
+      const res = await axios.get(`https://shopping-ekart.vercel.app/v1/orders/my-order`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) setUserOrder(res.data.orders)

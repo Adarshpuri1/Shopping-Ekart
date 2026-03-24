@@ -63,7 +63,7 @@ const Profile = () => {
     if (file) form.append('file', file)
     try {
       setLoading(true)
-      const res = await axios.put(`https://shopping-ekart-backend.onrender.comapi/v1/user/update/${id}`, form, {
+      const res = await axios.put(`https://shopping-ekart.vercel.app/v1/user/update/${id}`, form, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

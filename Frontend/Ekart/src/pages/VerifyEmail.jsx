@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     const[status,setStatus]=useState("verifying.....");
     const VerifyEmails=async()=>{
         try{
-            const res=await axios.post(`https://shopping-ekart-backend.onrender.comapi/v1/user/verify`,{},{
+            const res=await axios.post(`https://shopping-ekart.vercel.app/v1/user/verify`,{},{
                 headers:{
                     Authorization: `Bearer ${token}`
                 }

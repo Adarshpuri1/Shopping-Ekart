@@ -155,7 +155,7 @@ const Navbar = () => {
   /* ── Logout ── */
   const logoutHandler = async () => {
     try {
-      const res = await axios.post('https://shopping-ekart-backend.onrender.comapi/v1/user/logout', {}, {
+      const res = await axios.post('https://shopping-ekart.vercel.app/v1/user/logout', {}, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {
