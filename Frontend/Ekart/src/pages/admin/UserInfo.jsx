@@ -52,7 +52,7 @@ const UserInfo = () => {
       formData.append('role',      updateUser.role)
       if (file) formData.append('file', file)
       const res = await axios.put(
-        `https://shopping-ekart.vercel.app/v1/user/update/${userId}`, formData,
+        `https://shopping-ekart.vercel.app/api/v1/user/update/${userId}`, formData,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )
       if (res.data.success) {
@@ -69,7 +69,7 @@ const UserInfo = () => {
 
   const getUserDetails = async () => {
     try {
-      const res = await axios.get(`https://shopping-ekart.vercel.app/v1/user/get-user/${userId}`)
+      const res = await axios.get(`https://shopping-ekart.vercel.app/api/v1/user/get-user/${userId}`)
       if (res.data.success) setUpdateUser(res.data.user)
     } catch (error) { console.error(error) }
   }

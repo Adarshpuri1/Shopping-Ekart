@@ -11,7 +11,7 @@ const Reverify = () => {
 
     const handlesubmit=async()=>{
         try{
-            const res=await axios.post(`https://shopping-ekart.vercel.app/v1/user/reverify`,{email: email},{
+            const res=await axios.post(`https://shopping-ekart.vercel.app/api/v1/user/reverify`,{email: email},{
                 headers:{
                     "Content-Type":"application/json"
                 }

@@ -144,7 +144,7 @@ const Hero = () => {
     setLoading(true);
 
     try {
-      const resp = await axios.post("https://shopping-ekart.vercel.app/v1/user/ai", {
+      const resp = await axios.post("https://shopping-ekart.vercel.app/api/v1/user/ai", {
         messes: userMessage.text,
       });
       setMessages((prev) => [...prev, { sender: "bot", text: resp.data.reply }]);

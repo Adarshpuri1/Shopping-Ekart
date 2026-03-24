@@ -68,7 +68,7 @@ const Signup = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await axios.post(`https://shopping-ekart.vercel.app/v1/user/register`, user, {
+      const res = await axios.post(`https://shopping-ekart.vercel.app/api/v1/user/register`, user, {
         headers: { 'Content-Type': 'application/json' }
       })
       if (res.data.success) {

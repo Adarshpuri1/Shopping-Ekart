@@ -15,7 +15,7 @@ const ProdocutDesc = ({ product }) => {
   const addtocart = async (productId) => {
     try {
       const res = await axios.post(
-        `https://shopping-ekart.vercel.app/v1/cart/add`,
+        `https://shopping-ekart.vercel.app/api/v1/cart/add`,
         { productId },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )

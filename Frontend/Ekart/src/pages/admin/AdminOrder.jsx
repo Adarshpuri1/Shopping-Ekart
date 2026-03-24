@@ -20,7 +20,7 @@ const AdminOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('https://shopping-ekart.vercel.app/v1/orders/all', {
+        const res = await axios.get('https://shopping-ekart.vercel.app/api/v1/orders/all', {
           headers: { Authorization: `Bearer ${accessToken}` }
         })
         if (res.data.success) setOrders(res.data.orders)
