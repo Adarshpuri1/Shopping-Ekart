@@ -149,7 +149,7 @@ const Hero = () => {
       });
       setMessages((prev) => [...prev, { sender: "bot", text: resp.data.reply }]);
     } catch (error) {
-      console.error("Chatbot Error:", error);
+      console.error("Chatbot Error is happing :", error);
       setMessages((prev) => [
         ...prev,
         { sender: "bot", text: "Something went wrong. Try again." },
