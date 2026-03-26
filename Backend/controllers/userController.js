@@ -180,12 +180,12 @@ export const login = async (req, resp) => {
             })
         }
 
-        // if (user.isVerified == false) {
-        //     return resp.status(400).json({
-        //         success: false,
-        //         message: "verify first "
-        //     })
-        // }
+        if (user.isVerified == false) {
+            return resp.status(400).json({
+                success: false,
+                message: "verify first "
+            })
+        }
 
         const accessToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '10d' })
         const refreshToken = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: '30d' })
