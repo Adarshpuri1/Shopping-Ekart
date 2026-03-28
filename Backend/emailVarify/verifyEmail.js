@@ -18,7 +18,7 @@ export const verifyEmail = async(token, email) => {
         text: `HI! There, You have recently visited 
          our website and entered your email.
          Please follow the given link to verify your email
-         http://localhost:5173/verify/${token}
+         https://shopping-ekart-frontend.onrender.com/verify/${token}
          Thanks`
     };
     transporter.sendMail(mailConfigurations,function (err, data) {
