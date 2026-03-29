@@ -83,8 +83,13 @@ const Login = () => {
       console.log(error)
       toast.error(error.response?.data?.message)
       if (error.response?.data?.message === 'verify first ') {
-        navigate('/reverify')
+        navigate('/reverify');
+         return;
       }
+       if(error.response?.data?.message == 'Please verify your email first'){
+          navigate('/reverify');
+         return;
+       }
     } finally {
       setLoading(false)
     }
