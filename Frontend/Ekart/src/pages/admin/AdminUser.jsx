@@ -21,16 +21,18 @@ const AdminUser = () => {
       const res = await axios(`https://shopping-ekart.vercel.app/api/v1/user/all-user`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
-      if (res.data.success) setUsers(res.data.Users)
+      if (res.data.success) {
+  setUsers(res.data.Users || [])
+}
     } catch (error) {
       console.warn(error)
     }
   }
 
-  const filteredUsers = users.filter(user =>
-    `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  const filteredUsers = (users || []).filter(user =>
+  `${user?.firstName || ''} ${user?.lastName || ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  (user?.email || '').toLowerCase().includes(searchTerm.toLowerCase())
+)
 
   useEffect(() => { getAllUser() }, [])
 
