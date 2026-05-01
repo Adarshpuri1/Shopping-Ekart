@@ -21,19 +21,20 @@ const AdminUser = () => {
       const res = await axios(`https://shopping-ekart.vercel.app/api/v1/user/all-user`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
-      if (res.data.success) {
-  setUsers(res.data.Users || [])
-        console.log(res.data)
-}
+      console.log('API response:', res.data) // ← keep this to verify shape
+      const data = res.data
+      // Handles 'Users', 'users', or 'data' key from the API
+      const userList = data?.Users || data?.users || data?.data || []
+      setUsers(Array.isArray(userList) ? userList : [])
     } catch (error) {
-      console.warn(error)
+      console.warn('getAllUser error:', error)
     }
   }
 
   const filteredUsers = (users || []).filter(user =>
-  `${user?.firstName || ''} ${user?.lastName || ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  (user?.email || '').toLowerCase().includes(searchTerm.toLowerCase())
-)
+    `${user?.firstName || ''} ${user?.lastName || ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (user?.email || '').toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   useEffect(() => { getAllUser() }, [])
 
@@ -105,7 +106,6 @@ const AdminUser = () => {
           --au-sub:     rgba(255,255,255,0.48);
         }
 
-        /* ── page ── */
         .au-page {
           font-family: 'DM Sans', sans-serif;
           padding-left: 300px;
@@ -122,9 +122,7 @@ const AdminUser = () => {
           .au-page { padding-left:1rem; padding-top:4rem; padding-right:1rem; }
         }
 
-        /* ── header ── */
         .au-header { margin-bottom: 1.75rem; }
-
         .au-title-row {
           display: flex; align-items: center; gap: .7rem; margin-bottom: .3rem;
         }
@@ -145,7 +143,6 @@ const AdminUser = () => {
           margin-left: calc(40px + .7rem);
         }
 
-        /* ── search ── */
         .au-search-wrap {
           position: relative; width: 320px; margin-top: 1.25rem;
         }
@@ -173,7 +170,6 @@ const AdminUser = () => {
           box-shadow: 0 0 0 3px rgba(99,102,241,.13);
         }
 
-        /* ── grid ── */
         .au-grid {
           display: grid;
           grid-template-columns: repeat(3,1fr);
@@ -183,7 +179,6 @@ const AdminUser = () => {
         @media(max-width:1024px){ .au-grid { grid-template-columns: repeat(2,1fr); } }
         @media(max-width:560px)  { .au-grid { grid-template-columns: 1fr; } }
 
-        /* ── user card ── */
         .au-card {
           background: var(--au-card);
           border: 1px solid var(--au-border);
@@ -198,8 +193,6 @@ const AdminUser = () => {
           border-color: rgba(99,102,241,.3);
           box-shadow: 0 12px 44px rgba(0,0,0,.55), 0 0 0 1px rgba(99,102,241,.1);
         }
-
-        /* shimmer top */
         .au-card::before {
           content: '';
           position: absolute; top:0; left:0; right:0; height:2px; z-index:5;
@@ -214,8 +207,6 @@ const AdminUser = () => {
           0%  { background-position:  220% 0 }
           100%{ background-position: -220% 0 }
         }
-
-        /* bottom glow */
         .au-card::after {
           content: '';
           position: absolute; bottom:0; left:0; right:0; height:55%; z-index:0;
@@ -225,12 +216,9 @@ const AdminUser = () => {
         }
         .au-card > * { position: relative; z-index: 1; }
 
-        /* ── user info row ── */
         .au-info-row {
           display: flex; align-items: center; gap: .85rem; margin-bottom: 1rem;
         }
-
-        /* avatar */
         .au-avatar-wrap {
           position: relative; flex-shrink: 0;
         }
@@ -240,7 +228,6 @@ const AdminUser = () => {
           border: 2px solid rgba(99,102,241,.35);
           box-shadow: 0 0 16px rgba(99,102,241,.25);
         }
-        /* online dot */
         .au-avatar-dot {
           position: absolute; bottom: 1px; right: 1px;
           width: 11px; height: 11px; border-radius: 50%;
@@ -248,7 +235,6 @@ const AdminUser = () => {
           box-shadow: 0 0 7px #22c55e;
           border: 2px solid #09091c;
         }
-
         .au-user-name {
           font-family: 'Syne', sans-serif;
           font-size: .95rem; font-weight: 700; color: #fff;
@@ -259,17 +245,12 @@ const AdminUser = () => {
           overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
           max-width: 170px;
         }
-
-        /* ── divider ── */
         .au-divider {
           height: 1px;
           background: linear-gradient(90deg, var(--au-accent), transparent);
           opacity: .13; margin-bottom: .85rem;
         }
-
-        /* ── action buttons ── */
         .au-actions { display: flex; gap: .6rem; }
-
         .au-btn-edit {
           flex: 1;
           display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
@@ -286,7 +267,6 @@ const AdminUser = () => {
           border-color: rgba(99,102,241,.35);
           color: #c7d2fe;
         }
-
         .au-btn-orders {
           flex: 1;
           display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
@@ -300,8 +280,6 @@ const AdminUser = () => {
           transition: box-shadow .2s, opacity .2s;
         }
         .au-btn-orders:hover { box-shadow: 0 4px 22px rgba(99,102,241,.58); opacity: .9; }
-
-        /* ── count chip ── */
         .au-count-chip {
           display: inline-flex; align-items: center; gap: .3rem;
           padding: .18rem .6rem; border-radius: 20px;
@@ -356,7 +334,6 @@ const AdminUser = () => {
               onMouseEnter={cardIn}
               onMouseLeave={cardOut}
             >
-              {/* User info */}
               <div className="au-info-row">
                 <div className="au-avatar-wrap"
                   onMouseEnter={avIn} onMouseLeave={avOut}>
@@ -373,10 +350,8 @@ const AdminUser = () => {
                 </div>
               </div>
 
-              {/* Divider */}
               <div className="au-divider" />
 
-              {/* Actions */}
               <div className="au-actions">
                 <button
                   className="au-btn-edit"
