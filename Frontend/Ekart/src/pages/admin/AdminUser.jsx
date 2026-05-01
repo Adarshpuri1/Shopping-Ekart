@@ -23,6 +23,7 @@ const AdminUser = () => {
       })
       if (res.data.success) {
   setUsers(res.data.Users || [])
+        console.log(res.data)
 }
     } catch (error) {
       console.warn(error)
