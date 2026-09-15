@@ -1,16 +1,15 @@
 import nodemailer from 'nodemailer'
 import 'dotenv/config'
-export const verifyEmail = async(token, email) => {
-    const transporter =
-        nodemailer.createTransport(
-            {
-                service: 'gmail',
-                auth: {
-                    user: process.env.MAIL_USER,
-                    pass: process.env.MAIL_PASS
-                }
-            }
-        );
+
+export const verifyEmail = async (token, email) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    });
+
     const mailConfigurations = {
         from: process.env.MAIL_USER,
         to: email,
@@ -21,11 +20,13 @@ export const verifyEmail = async(token, email) => {
          https://shopping-ekart-frontend.onrender.com/verify/${token}
          Thanks`
     };
-    transporter.sendMail(mailConfigurations,function (err, data) {
-            if (err) {
-                console.log('Error Occurs');
-            } else {
-                console.log('Email sent successfully');
-            }
-        });
+
+    try {
+        const info = await transporter.sendMail(mailConfigurations);
+        console.log('Email sent successfully:', info.messageId);
+        return info;
+    } catch (err) {
+        console.error('verifyEmail error:', err.message);
+        throw err;
+    }
 }
