@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useEffect, useState, useRef, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { gsap } from 'gsap'
@@ -71,7 +71,7 @@ const AdminSale = () => {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get('https://shopping-ekart-backend.onrender.com/api/v1/orders/sales', {
+      const res = await axios.get('/api/v1/orders/sales', {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) setStats(res.data)

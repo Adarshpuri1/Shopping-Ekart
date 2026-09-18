@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -11,7 +11,7 @@ const Reverify = () => {
 
     const handlesubmit=async()=>{
         try{
-            const res=await axios.post(`https://shopping-ekart.vercel.app/api/v1/user/reverify`,{email: email},{
+            const res=await axios.post('/api/v1/user/reverify',{email: email},{
                 headers:{
                     "Content-Type":"application/json"
                 }

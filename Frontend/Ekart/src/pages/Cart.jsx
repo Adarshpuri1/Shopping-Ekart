@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShoppingCart, Trash2, Plus, Minus, Package, Truck, Shield, RotateCcw, Tag } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { setCart } from '@/redux/productSlice'
 import { toast } from 'sonner'
 import { gsap } from 'gsap'
@@ -23,7 +23,7 @@ const Cart = () => {
 
   const getAllData = async () => {
     try {
-      const res = await axios.get('https://shopping-ekart.vercel.app/api/v1/cart/', {
+      const res = await axios.get('/api/v1/cart/', {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) dispatch(setCart(res.data.cart))
@@ -35,7 +35,7 @@ const Cart = () => {
   const handleUpdateQuantity = async (productId, type) => {
     if (!productId) return
     try {
-      const res = await axios.put('https://shopping-ekart.vercel.app/api/v1/cart/update',
+      const res = await axios.put('/api/v1/cart/update',
         { productId, type },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )
@@ -46,7 +46,7 @@ const Cart = () => {
   const handleRemove = async productId => {
     if (!productId) return
     try {
-      const res = await axios.delete('https://shopping-ekart.vercel.app/api/v1/cart/remove', {
+      const res = await axios.delete('/api/v1/cart/remove', {
         headers: { Authorization: `Bearer ${accessToken}` },
         data: { productId }
       })

@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input'
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { setProducts } from '@/redux/productSlice'
 import { toast } from 'sonner'
 import { Edit, Search, Trash2, PackageSearch, SlidersHorizontal } from 'lucide-react'
@@ -61,7 +61,7 @@ const AdminProduct = () => {
     editProduct.productImg.filter(img => img instanceof File).forEach(file => formData.append('file', file))
 
     try {
-      const res = await axios.put(`https://shopping-ekart-backend.onrender.com/api/v1/product/update/${editProduct._id}`, formData, {
+      const res = await axios.put(`/api/v1/product/update/${editProduct._id}`, formData, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {
@@ -75,7 +75,7 @@ const AdminProduct = () => {
   const deleteProductHandler = async (productId) => {
     try {
       const reminingProducts = products.filter(p => p._id !== productId)
-      const res = await axios.delete(`https://shopping-ekart-backend.onrender.com/api/v1/product/delete/${productId}`, {
+      const res = await axios.delete(`/api/v1/product/delete/${productId}`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

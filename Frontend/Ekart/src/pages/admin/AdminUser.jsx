@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '@/lib/api'
 import { Edit, Eye, Search, Users } from 'lucide-react'
 import React, { useEffect, useState, useRef } from 'react'
 import userlogo from '../../assets/userlogo.png'
@@ -18,7 +18,7 @@ const AdminUser = () => {
   /* ── fetch ── */
   const getAllUser = async () => {
     try {
-      const res = await axios(`https://shopping-ekart-backend.onrender.com/api/v1/user/all-user`, {
+      const res = await axios('/api/v1/user/all-user', {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       // BUG FIX: always fall back to [] so .filter() never runs on undefined

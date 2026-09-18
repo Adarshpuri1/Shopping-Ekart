@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { addAddress, setSelectedAddress } from '@/redux/productSlice'
 import store from '@/redux/store'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -37,7 +37,7 @@ const Address = () => {
 
   const handlePayment = async () => {
     try {
-      const { data } = await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/orders/create-order`, {
+      const { data } = await axios.post('/api/v1/orders/create-order', {
         products: cart?.items?.map(item => ({ productId: item.productId._id, quantity: item.quantity })),
         tax, shipping, amount: total, Currency: 'INR'
       }, { headers: { Authorization: `Bearer ${accessToken}` } })
@@ -53,7 +53,7 @@ const Address = () => {
         Description: 'Order Payment',
         handler: async function (response) {
           try {
-            const verifyRes = await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/orders/verify`, response,
+            const verifyRes = await axios.post('/api/v1/orders/verify', response,
               { headers: { Authorization: `Bearer ${accessToken}` } })
             if (verifyRes.data.success) {
               toast.success('✅ Payment Successfull!')
@@ -64,7 +64,7 @@ const Address = () => {
         },
         modal: {
           ondismiss: async function () {
-            await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/orders/verify`,
+            await axios.post('/api/v1/orders/verify',
               { razorpay_order_id: data.order.id, paymentFailed: true },
               { headers: { Authorization: `Bearer ${accessToken}` } })
             toast.error('Payment Cancelled')
@@ -76,7 +76,7 @@ const Address = () => {
 
       const rzp = new window.Razorpay(options)
       rzp.on('Payment.failed', async function () {
-        await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/orders/verify`,
+        await axios.post('/api/v1/orders/verify',
           { razorpay_order_id: data.order.id, paymentFailed: true },
           { headers: { Authorization: `Bearer ${accessToken}` } })
         toast.error('Payment failed. Please try again')

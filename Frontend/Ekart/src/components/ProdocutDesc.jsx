@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { setCart } from '@/redux/productSlice'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
@@ -15,7 +15,7 @@ const ProdocutDesc = ({ product }) => {
   const addtocart = async (productId) => {
     try {
       const res = await axios.post(
-        `https://shopping-ekart-backend.onrender.com/api/v1/cart/add`,
+        '/api/v1/cart/add',
         { productId },
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )

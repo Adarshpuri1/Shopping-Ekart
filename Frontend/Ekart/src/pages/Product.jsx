@@ -3,7 +3,7 @@ import {
   Select, SelectContent, SelectGroup,
   SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from '@/redux/productSlice'
@@ -32,7 +32,7 @@ const Product = () => {
   const getAllData = async () => {
     try {
       setLoading(true)
-      const res = await axios.get('https://shopping-ekart.vercel.app/api/v1/product/getallproducts')
+      const res = await axios.get('/api/v1/product/getallproducts')
       if (res.data.success) {
         setAllProduct(res.data.Products)
         dispatch(setProducts(res.data.Products))

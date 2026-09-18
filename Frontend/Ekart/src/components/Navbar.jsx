@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Button } from './ui/button'
 import logo from '../assets/logo.jpg'
 import { ShoppingCart, Zap } from 'lucide-react'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { useDispatch, useSelector } from 'react-redux'
 import store from '@/redux/store'
 import { toast } from 'sonner'
@@ -155,7 +155,7 @@ const Navbar = () => {
   /* ── Logout ── */
   const logoutHandler = async () => {
     try {
-      const res = await axios.post(`https://shopping-ekart-backend.onrender.com/api/v1/user/logout`, {}, {
+      const res = await axios.post('/api/v1/user/logout', {}, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

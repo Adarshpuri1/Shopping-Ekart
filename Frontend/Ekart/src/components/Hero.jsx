@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import img1 from "../assets/pic1.webp";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from '@/lib/api';
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sphere, MeshDistortMaterial, Float, Stars } from "@react-three/drei";
 import { gsap } from "gsap";
@@ -144,7 +144,7 @@ const Hero = () => {
     setLoading(true);
 
     try {
-      const resp = await axios.post("https://shopping-ekart-backend.onrender.com/api/v1/user/ai", {
+      const resp = await axios.post('/api/v1/user/ai', {
         messes: userMessage.text,
       });
       setMessages((prev) => [...prev, { sender: "bot", text: resp.data.reply }]);

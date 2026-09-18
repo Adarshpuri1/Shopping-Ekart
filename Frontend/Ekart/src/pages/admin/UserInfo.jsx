@@ -6,7 +6,7 @@ import userlogo from '../../assets/userlogo.png'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { useDispatch } from 'react-redux'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { toast } from 'sonner'
 import { setUser } from '@/redux/userSlice'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
@@ -52,7 +52,7 @@ const UserInfo = () => {
       formData.append('role',      updateUser.role)
       if (file) formData.append('file', file)
       const res = await axios.put(
-        `https://shopping-ekart-backend.onrender.com/api/v1/user/update/${userId}`, formData,
+        `/api/v1/user/update/${userId}`, formData,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       )
       if (res.data.success) {
@@ -69,7 +69,7 @@ const UserInfo = () => {
 
   const getUserDetails = async () => {
     try {
-      const res = await axios.get(`https://shopping-ekart-backend.onrender.com/api/v1/user/get-user/${userId}`)
+      const res = await axios.get(`/api/v1/user/get-user/${userId}`)
       if (res.data.success) setUpdateUser(res.data.user)
     } catch (error) { console.error(error) }
   }

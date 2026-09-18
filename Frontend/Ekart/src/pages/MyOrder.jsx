@@ -1,5 +1,5 @@
 import Ordercard from '@/components/Ordercard'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useEffect, useState, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Package } from 'lucide-react'
@@ -10,7 +10,7 @@ const MyOrder = () => {
 
   const getUserOrders = async () => {
     try {
-      const res = await axios.get(`https://shopping-ekart.vercel.app/api/v1/orders/my-order`, {
+      const res = await axios.get('/api/v1/orders/my-order', {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) setUserOrder(res.data.orders)

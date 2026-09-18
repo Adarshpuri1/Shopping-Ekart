@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { setProducts } from '@/redux/productSlice'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { Loader2, PackagePlus, Sparkles } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -50,7 +50,7 @@ const AddProduct = () => {
 
     try {
       setLoading(true)
-      const res = await axios.post('https://shopping-ekart-backend.onrender.com/api/v1/product/add', form, {
+      const res = await axios.post('/api/v1/product/add', form, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '@/lib/api';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ const VerifyEmail = () => {
     const[status,setStatus]=useState("verifying.....");
     const VerifyEmails=async()=>{
         try{
-            const res=await axios.post(`https://shopping-ekart.vercel.app/api/v1/user/verify`,{},{
+            const res=await axios.post('/api/v1/user/verify',{},{
                 headers:{
                     Authorization: `Bearer ${token}`
                 }

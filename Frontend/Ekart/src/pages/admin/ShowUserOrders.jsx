@@ -1,5 +1,5 @@
 import Ordercard from '@/components/Ordercard'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { gsap } from 'gsap'
@@ -11,7 +11,7 @@ const ShowUserOrders = () => {
 
   const getUserOrders = async () => {
     const res = await axios.get(
-      `https://shopping-ekart-backend.onrender.com/api/v1/orders/user-order/${params.userId}`,
+      `/api/v1/orders/user-order/${params.userId}`,
       { headers: { Authorization: `Bearer ${accessToken}` } }
     )
     if (res.data.success) setUserOrder(res.data.orders)

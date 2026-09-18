@@ -1,5 +1,5 @@
 import { setToken, setUser } from '@/redux/userSlice'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useState, useRef, useEffect, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -69,7 +69,7 @@ const Login = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await axios.post(`https://shopping-ekart.vercel.app/api/v1/user/login`, formdata, {
+      const res = await axios.post('/api/v1/user/login', formdata, {
         headers: { 'Content-Type': 'application/json' }
       })
       if (res.data.success) {

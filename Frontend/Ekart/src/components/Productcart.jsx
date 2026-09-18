@@ -4,7 +4,7 @@ import { ShoppingCart } from 'lucide-react'
 import { Skeleton } from './ui/skeleton'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios from '@/lib/api'
 import { toast } from 'sonner'
 import { setCart } from '@/redux/productSlice'
 import { gsap } from 'gsap'
@@ -17,7 +17,7 @@ const Productcart = ({ product, loading }) => {
 
   const addToCart = async (productId) => {
     try {
-      const res = await axios.post('https://shopping-ekart-backend.onrender.com/api/v1/cart/add', { productId }, {
+      const res = await axios.post('/api/v1/cart/add', { productId }, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

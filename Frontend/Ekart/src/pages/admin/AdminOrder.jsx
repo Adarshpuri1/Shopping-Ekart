@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useEffect, useState, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -20,7 +20,7 @@ const AdminOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('https://shopping-ekart-backend.onrender.com/api/v1/orders/all', {
+        const res = await axios.get('/api/v1/orders/all', {
           headers: { Authorization: `Bearer ${accessToken}` }
         })
         if (res.data.success) setOrders(res.data.orders)

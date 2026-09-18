@@ -1,7 +1,7 @@
 import { setUser } from '@/redux/userSlice'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -63,7 +63,7 @@ const Profile = () => {
     if (file) form.append('file', file)
     try {
       setLoading(true)
-      const res = await axios.put(`https://shopping-ekart.vercel.app/api/v1/user/update/${id}`, form, {
+      const res = await axios.put(`/api/v1/user/update/${id}`, form, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       if (res.data.success) {

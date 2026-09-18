@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '@/lib/api'
 import React, { useState, useRef, useEffect, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -68,7 +68,7 @@ const Signup = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await axios.post(`https://shopping-ekart.vercel.app/api/v1/user/register`, user, {
+      const res = await axios.post('/api/v1/user/register', user, {
         headers: { 'Content-Type': 'application/json' }
       })
       if (res.data.success) {
