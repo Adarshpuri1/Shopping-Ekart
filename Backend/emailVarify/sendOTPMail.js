@@ -7,8 +7,6 @@ export const sendOTPMail = async (otp, email) => {
         auth: {
             user: process.env.MAIL_USER,
             pass: process.env.MAIL_PASS
-            console.log(process.env.MAIL_USER),
-            console.log(process.env.MAIL_PASS)
         }
     });
 
