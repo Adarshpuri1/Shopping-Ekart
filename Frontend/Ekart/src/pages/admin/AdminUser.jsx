@@ -18,7 +18,7 @@ const AdminUser = () => {
   /* ── fetch ── */
   const getAllUser = async () => {
     try {
-      const res = await axios(`https://shopping-ekart.vercel.app/api/v1/user/all-user`, {
+      const res = await axios(`https://shopping-ekart-backend.onrender.com/api/v1/user/all-user`, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       // BUG FIX: always fall back to [] so .filter() never runs on undefined
